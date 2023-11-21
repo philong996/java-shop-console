@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.Scanner;
+
 import configs.ApplicationContext;
 
 public class MainMenu implements Menu {
@@ -26,12 +28,47 @@ public class MainMenu implements Menu {
 	
 	@Override
 	public void start() {
-		// <write your code here>
+		while (true) {
+            if (context.getMainMenu() == null) {
+                context.setMainMenu(this);
+            }
+
+            Menu choosedMenu = null;
+
+            choiceLoop: while (true) {
+                printMenuHeader();
+                Scanner sc = new Scanner(System.in);
+
+                System.out.println("Choose the menu: ");
+                String userInput = sc.next();
+
+                if (userInput.equalsIgnoreCase("exit")) {
+                    System.exit(0);
+                }
+
+                switch (userInput) {
+                    case "1":
+                        choosedMenu = new SignUpMenu();
+                        break choiceLoop;
+                
+                    default:
+                        System.out.println("Only 1, 2, 3, 4, 5 is allowed. Try one more time");
+                        continue;
+                }
+            } 
+
+            choosedMenu.start();
+        }
 		
 	}
 
 	@Override
 	public void printMenuHeader() {
-		// <write your code here>
+        System.out.println("***** MAIN MENU *****");
+        if (context.getLoggedInUser() == null) {
+            System.out.println(MAIN_MENU_TEXT_FOR_LOGGED_OUT_USER);
+        } else {
+            System.out.println(MAIN_MENU_TEXT_FOR_LOGGED_IN_USER);
+        }
 	}
 }

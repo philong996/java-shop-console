@@ -1,24 +1,29 @@
 package configs;
 
+import entities.ICart;
+import entities.Cart;
+import entities.IUser;
+import menu.Menu;
+
 public class ApplicationContext {
 	
 	private static ApplicationContext instance;
 	
-	private User loggedInUser;
+	private IUser loggedInUser;
 	private Menu mainMenu;
-	private Cart sessionCart;
+	private ICart sessionCart;
 	
 	private ApplicationContext() {
 	}
 	
-	public void setLoggedInUser(User user) {
+	public void setLoggedInUser(IUser user) {
 		if (this.sessionCart != null) {
 			this.sessionCart.clear(); // we have to clear session cart when new user is logged in
 		}
 		this.loggedInUser = user;
 	}
 	
-	public User getLoggedInUser() {
+	public IUser getLoggedInUser() {
 		return this.loggedInUser;
 	}
 	
@@ -37,9 +42,9 @@ public class ApplicationContext {
 		return instance;
 	}
 
-	public Cart getSessionCart() {
+	public ICart getSessionCart() {
 		if (this.sessionCart == null) {
-			this.sessionCart = new DefaultCart();
+			this.sessionCart = new Cart();
 		}
 		return this.sessionCart;
 	}

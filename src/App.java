@@ -1,3 +1,4 @@
+import menu.MainMenu;
 import menu.Menu;
 
 public class App {

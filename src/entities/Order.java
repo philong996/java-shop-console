@@ -1,15 +1,48 @@
 package entities;
 
-public interface Order {
+public class Order implements IOrder {
 
-	boolean isCreditCardNumberValid(String userInput);
-
-	void setCreditCardNumber(String userInput);
-
-	void setProducts(Product[] products);
-
-	void setCustomerId(int customerId);
+	private static final int AMOUNT_OF_DIGITS_IN_CREDIT_CARD_NUMBER = 16;
 	
-	int getCustomerId();
+	private String creditCardNumber;
+	private Product[] products;
+	private int customerId;
+
+	@Override
+	public boolean isCreditCardNumberValid(String creditCardNumber) {
+		// <write your code here>
+		return false;
+	}
+
+	@Override
+	public void setCreditCardNumber(String creditCardNumber) {
+		// <write your code here>
+	}
+
+	@Override
+	public void setProducts(Product[] products) {
+		// <write your code here>
+	}
+
+	@Override
+	public void setCustomerId(int customerId) {
+		// <write your code here>
+	}
+
+
+	@Override
+	public int getCustomerId() {
+		return this.customerId;
+	}
+	
+	@Override
+	public String toString() {
+		// <write your code here>
+		return null;
+	}
+
+	
+	
+	
 
 }
