@@ -27,8 +27,9 @@ public class SignUpMenu implements Menu {
         System.out.println("Input the last name");
         String lastName = sc.next();
 
+        sc.nextLine();
         System.out.println("Input the email");
-        String email = sc.next();
+        String email = sc.nextLine();
 
         System.out.println("Input the password");
         String password = sc.next();
@@ -36,13 +37,14 @@ public class SignUpMenu implements Menu {
         User user = new User(
             firstName,
             lastName,
-            email,
-            password
+            password,
+            email
         );
 
         String error_message = userManagementService.registerUser(user);
-        if (error_message == null) {
-            context.setLoggedInUser(user);
+        if (error_message == "") {
+            userManagementService.registerUser(user);
+            // context.setLoggedInUser(user);
             System.out.println("Successful! A new user is created");
         } else {
             System.out.println(error_message);
@@ -51,7 +53,7 @@ public class SignUpMenu implements Menu {
 
 	@Override
 	public void printMenuHeader() {
-		System.out.println("***** SIGNUP MENU *****");
+		System.out.println("\n***** SIGNUP MENU *****");
 	}
 
 }

@@ -51,6 +51,10 @@ public class MainMenu implements Menu {
                         choosedMenu = new SignUpMenu();
                         break choiceLoop;
                 
+                    case "2":
+                        choosedMenu = new SignInMenu();
+                        break choiceLoop;
+
                     default:
                         System.out.println("Only 1, 2, 3, 4, 5 is allowed. Try one more time");
                         continue;
@@ -64,7 +68,7 @@ public class MainMenu implements Menu {
 
 	@Override
 	public void printMenuHeader() {
-        System.out.println("***** MAIN MENU *****");
+        System.out.println("\n***** MAIN MENU *****");
         if (context.getLoggedInUser() == null) {
             System.out.println(MAIN_MENU_TEXT_FOR_LOGGED_OUT_USER);
         } else {

@@ -1,6 +1,7 @@
 package services;
 
 import entities.IUser;
+import entities.User;
 
 public class UserManagementService implements IUserManagementService {
 	
@@ -36,7 +37,7 @@ public class UserManagementService implements IUserManagementService {
         }
         
         users[lastUserIndex++] = user;
-        return null;
+        return NO_ERROR_MESSAGE;
 	}
 
 	public static UserManagementService getInstance() {
@@ -55,7 +56,7 @@ public class UserManagementService implements IUserManagementService {
 	@Override
 	public IUser getUserByEmail(String userEmail) {
 		for (IUser user : users) {
-            if (user != null && user.getEmail() == userEmail) {
+            if ((user != null) && (user.getEmail().equals(userEmail))) {
                 return user;
             }
         }
@@ -66,4 +67,26 @@ public class UserManagementService implements IUserManagementService {
 	void clearServiceState() {
 		// <write your code here>
 	}
+
+	public static void main(String[] args) {
+		User user = new User(
+            "firstName",
+            "lastName",
+            "password",
+            "email"
+        );
+
+		UserManagementService userManagementService = new UserManagementService();
+
+		userManagementService.registerUser(user);
+
+		String password = "password";
+		IUser userTest = userManagementService.getUserByEmail("email");
+        if (userTest != null && user.getPassword() == password) {
+            System.out.printf("Glad to see you back %s %s", user.getFirstName(), user.getLastName());
+        } else {
+            System.out.println("Unfortunately, such login and password doesn't exist");
+        }
+	}
+
 }
