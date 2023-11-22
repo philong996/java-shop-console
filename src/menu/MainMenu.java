@@ -65,6 +65,11 @@ public class MainMenu implements Menu {
 
                         break choiceLoop;
 
+                    case "4":
+                        choosedMenu = new OrderMenu();
+
+                        break choiceLoop;
+
                     default:
                         System.out.println("Only 1, 2, 3, 4, 5 is allowed. Try one more time");
                         continue;

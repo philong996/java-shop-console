@@ -5,7 +5,7 @@ public interface IOrder {
 
 	void setCreditCardNumber(String userInput);
 
-	void setProducts(Product[] products);
+	void setProducts(IProduct[] products);
 
 	void setCustomerId(int customerId);
 	

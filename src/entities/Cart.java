@@ -1,31 +1,37 @@
 package entities;
 
 public class Cart implements ICart {
+    private static int DEFAULT_PRODUCTS_CAPACITY = 10;
+	IProduct[] products;
+    int lastProductIndex;
 
-	// <write your code here>
-	
+    {
+        this.products = new IProduct[Cart.DEFAULT_PRODUCTS_CAPACITY];
+        lastProductIndex = 0;
+    }
+
 	@Override
 	public boolean isEmpty() {
-		// <write your code here>
-		
-		return true;
+        if (products[0] == null)
+		    return true;
+        
+        return false;
 	}
 
 	@Override
-	public void addProduct(Product product) {
-		// <write your code here>
+	public void addProduct(IProduct product) {
+		products[lastProductIndex++] = product;
 	}
 
 	@Override
-	public Product[] getProducts() {
-		// <write your code here>
-		
-		return null;
+	public IProduct[] getProducts() {
+		return products;
 	}
 
 	@Override
 	public void clear() {
-		// <write your code here>
+		products = new Product[DEFAULT_PRODUCTS_CAPACITY];
+        lastProductIndex = 0;
 	}
 
 }

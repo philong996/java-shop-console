@@ -3,9 +3,9 @@ package entities;
 public interface ICart {
     boolean isEmpty();
 
-	void addProduct(Product productById);
+	void addProduct(IProduct productById);
 
-	Product[] getProducts();
+	IProduct[] getProducts();
 
 	void clear();
 }
