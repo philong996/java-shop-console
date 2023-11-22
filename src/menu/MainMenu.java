@@ -52,7 +52,17 @@ public class MainMenu implements Menu {
                         break choiceLoop;
                 
                     case "2":
-                        choosedMenu = new SignInMenu();
+                        if (context.getLoggedInUser() == null) {
+                            choosedMenu = new SignInMenu();
+                        } else {
+                            choosedMenu = new SignOutMenu();
+                        }
+                        
+                        break choiceLoop;
+                    
+                    case "3":
+                        choosedMenu = new ProductCatalogMenu();
+
                         break choiceLoop;
 
                     default:

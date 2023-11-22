@@ -44,7 +44,6 @@ public class SignUpMenu implements Menu {
         String error_message = userManagementService.registerUser(user);
         if (error_message == "") {
             userManagementService.registerUser(user);
-            // context.setLoggedInUser(user);
             System.out.println("Successful! A new user is created");
         } else {
             System.out.println(error_message);

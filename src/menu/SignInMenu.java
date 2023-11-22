@@ -32,6 +32,7 @@ public class SignInMenu implements Menu {
 
         IUser user = userManagementService.getUserByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
+            context.setLoggedInUser(user);
             System.out.printf("Glad to see you back %s %s", user.getFirstName(), user.getLastName());
         } else {
             System.out.println("Unfortunately, such login and password doesn't exist");
@@ -43,20 +44,4 @@ public class SignInMenu implements Menu {
 		System.out.println("\n***** SIGNUP IN *****");
 	}
 
-
-    public static void main(String[] args) {
-		User user = new User(
-            "tester",
-            "tester",
-            "123456",
-            "test@test.com"
-        );
-
-		UserManagementService userManagementService = UserManagementService.getInstance();
-        userManagementService.registerUser(user);
-
-        SignInMenu menu = new SignInMenu();
-
-        menu.start();
-    }
 }

@@ -1,23 +1,32 @@
 package entities;
 
 public class Product implements IProduct {
-	
+	private static int nextId=0;
+
 	private int id;
 	private String productName;
 	private String categoryName;
 	private double price;
 
+	{
+		this.id = ++Product.nextId;
+	}
+
 	public Product() {
 	}
 	
-	public Product(int id, String productName, String categoryName, double price) {
-		// <write your code here>
+	public Product(String productName, String categoryName, double price) {
+		this.productName = productName;
+		this.categoryName = categoryName;
+		this.price = price;
 	}
 
 	@Override
 	public String toString() {
-		// <write your code here>
-		return null;
+		return "Product {id: " + id + ", " +
+			   "Name: " + productName + ", " +
+			   "Category: " + categoryName + ", " +
+			   "Price: " + price + " }";
 	}
 
 	@Override
